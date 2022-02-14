@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "978357190542",
+    "project_id": "msnapp-de034",
+    "storage_bucket": "msnapp-de034.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:978357190542:android:e784352cec837f12f6eedf",
+        "android_client_info": {
+          "package_name": "com.cursoandroid.msnapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "978357190542-9k4iklpoooiert7p6t5lm77elmepvc2p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cursoandroid.msnapp",
+            "certificate_hash": "01311d3e0bc60859e536f63b8af67eb225220119"
+          }
+        },
+        {
+          "client_id": "978357190542-rdtmr9j02vb1kedfpfsimipisfi91cul.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZQyDSymNcTLEuyzldkYAtldvmrD4Mckk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "978357190542-rdtmr9j02vb1kedfpfsimipisfi91cul.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
