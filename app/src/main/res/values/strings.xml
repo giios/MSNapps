@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MSNapp</string>
+    <string name="botao_cadastrar">Cadastrar</string>
+    <string name="botao_validar">Validar</string>
 </resources>
