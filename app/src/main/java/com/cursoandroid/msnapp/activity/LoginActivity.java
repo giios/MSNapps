@@ -2,6 +2,7 @@ package com.cursoandroid.msnapp.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -58,12 +59,12 @@ public class LoginActivity extends AppCompatActivity {
             String token = String.valueOf( numeroRandomico );
 
             //Salvar os dados para validação
-            Preferencias preferencias = new Preferencias(LoginActivity.this);
+            Preferencias preferencias = new Preferencias(getApplicationContext());
             preferencias.salvarUsuarioPreferencias(nomeUsuario, telefoneSemFormatacao, token);
 
             HashMap<String, String> usuario = preferencias.getDadosUsuario();
 
-            Log.i("TOKEN", "TOKEN" + usuario.get("token"));
+            Log.i("TOKEN", "NOME: " + usuario.get("Nome") + " FONE: " + usuario.get("Telefone"));
 
         });
 

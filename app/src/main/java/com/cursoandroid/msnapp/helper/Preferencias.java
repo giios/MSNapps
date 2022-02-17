@@ -10,7 +10,7 @@ public class Preferencias {
     private Context contexto;
     private SharedPreferences preferences;
     private String NOME_ARQUIVO = "msnapp.preferencias";
-    private int MODE = 0;
+    //private int MODE = 0;
     private SharedPreferences.Editor editor;
 
     private String CHAVE_NOME = "Nome";
@@ -20,7 +20,7 @@ public class Preferencias {
     public Preferencias(Context contextoParametro){
 
         contexto = contextoParametro;
-        preferences = contexto.getSharedPreferences(NOME_ARQUIVO, MODE);
+        preferences = contexto.getSharedPreferences(NOME_ARQUIVO, Context.MODE_PRIVATE);
         editor = preferences.edit();
 
     }
