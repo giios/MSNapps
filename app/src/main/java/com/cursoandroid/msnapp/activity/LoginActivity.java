@@ -5,61 +5,83 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.cursoandroid.msnapp.R;
-//import com.github.rtoshiro.util.format.SimpleMaskFormatter;
-//import com.github.rtoshiro.util.format.text.MaskTextWatcher;
+import com.cursoandroid.msnapp.helper.Preferencias;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Random;
 
 public class LoginActivity extends AppCompatActivity {
 
     private EditText telefone;
-    private String ultimoCaracterDigitado = " ";
+    private EditText nome;
+    private EditText codPais;
+    private EditText codValidacao;
+    private Button cadastrar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        telefone = findViewById(R.id.edit_telefone);
+        telefone     = (EditText) findViewById(R.id.edit_telefone);
+        nome         = (EditText) findViewById(R.id.edit_nome);
+        codPais      = (EditText) findViewById(R.id.edit_cod_pais);
+        codValidacao = (EditText) findViewById(R.id.edit_cod_validacao);
+        cadastrar    = (Button) findViewById(R.id.bt_cadastrar) ;
 
-        telefone.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                Integer tamanhodigitos = telefone.getText().toString().length();
-                if (tamanhodigitos > 1){
-                    ultimoCaracterDigitado = telefone.getText().toString().substring(tamanhodigitos - 1);
-                }
-            }
+        telefone.addTextChangedListener(MaskEditUtil.mask(telefone, MaskEditUtil.FORMAT_FONE));
+        codPais.addTextChangedListener(MaskEditUtil.mask(codPais, MaskEditUtil.FORMAT_COD_PAIS));
 
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                Integer tamanhodigitos = telefone.getText().toString().length();
-                if(tamanhodigitos == 2){
-                    if(!ultimoCaracterDigitado.equals(" ")){
-                        telefone.append(" ");
-                    }else{
-                        telefone.getText().delete(tamanhodigitos -1, tamanhodigitos);
-                    }
-                }else if(tamanhodigitos == 8){
-                    if(!ultimoCaracterDigitado.equals(" ")){
-                        telefone.append("-");
-                    }else{
-                        telefone.getText().delete(tamanhodigitos -1, tamanhodigitos);
-                    }
+        /*Criando ação de clique no botão cadastrar ao mesmo tempo que formata o numero de telefone, retirando alguns caracteres*/
+        cadastrar.setOnClickListener(view -> {
+            String nomeUsuario = nome.getText().toString();
+            String telefoneCompleto = codPais.getText().toString() +
+                    telefone.getText().toString();
 
-                }
-            }
+            String telefoneSemFormatacao = telefoneCompleto.replace("+", "");
+            telefoneSemFormatacao = telefoneSemFormatacao.replace("-", "");
+            telefoneSemFormatacao = telefoneSemFormatacao.replace("(", "");
+            telefoneSemFormatacao = telefoneSemFormatacao.replace(")", "");
+            telefoneSemFormatacao = telefoneSemFormatacao.replace(" ", "");
 
-            @Override
-            public void afterTextChanged(Editable editable) {
+            //Gerar Token
+            Random randomico = new Random();
+            int numeroRandomico = randomico.nextInt(999999 - 100000) + 100000;
+            String token = String.valueOf( numeroRandomico );
 
-            }
+            //Salvar os dados para validação
+            Preferencias preferencias = new Preferencias(LoginActivity.this);
+            preferencias.salvarUsuarioPreferencias(nomeUsuario, telefoneSemFormatacao, token);
+
+            HashMap<String, String> usuario = preferencias.getDadosUsuario();
+
+            Log.i("TOKEN", "TOKEN" + usuario.get("token"));
+
         });
 
-        //telefone.addTextChangedListener(MaskEditUtil.mask(telefone, "(##) #####-#####"));
 
-        //telefone.addTextChangedListener();
 
-    }
-}
+//                //Gerar token
+//                Random randomico = new Random();
+//                int numeroRandomico = randomico.nextInt(999999 - 100000) + 100000;
+//                String token = String.valueOf( numeroRandomico );
+//
+//                //Salvar os dados para validação
+//                Preferencias preferencias = new Preferencias(LoginActivity.this);
+//                preferencias.salvarUsuarioPreferencias(nomeUsuario, telefone, token);
+//
+//
+//                HashMap<String, String> usuario = preferencias.getDadosUsuario();
+//
+//                Log.i("TOKEN", "T: " + usuario.get("token"));
+
+            }
+        }
