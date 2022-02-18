@@ -12,6 +12,7 @@ public abstract class MaskEditUtil {
     public static final String FORMAT_DATE = "##/##/####";
     public static final String FORMAT_HOUR = "##:##";
     public static final String FORMAT_COD_PAIS = "+##";
+    public static final String FORMAT_TOKEN = "### ###";
 
     /**
      * Método que deve ser chamado para realizar a formatação
