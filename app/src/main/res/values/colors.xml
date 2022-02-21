@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="ColorPrimarDark">#628a62</color>
+    <color name="ColorPrimarDark">#37AE37</color>
     <color name="ColorPrimary">#6aabd8</color>
     <color name="TextColorPrimary">@color/white</color>
     <color name="purple_700">#FF3700B3</color>

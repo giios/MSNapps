@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center_horizontal|center_vertical"
     android:background="@color/ColorPrimarDark"
-    tools:context=".activity.LoginActivity">
+    tools:context=".activity.CadastroUsuarioActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -18,62 +17,65 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_minimalista" />
+        app:srcCompat="@drawable/usuario" />
 
     <EditText
-        android:id="@+id/edit_login_email"
+        android:id="@+id/edit_text_nome_cad"
         android:layout_width="fill_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="Digite seu e-mail"
-        android:inputType="textEmailAddress"
+        android:hint="Digite seu nome"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
-        android:id="@+id/edit_login_senha"
-        android:layout_width="0dp"
+        android:id="@+id/edit_text_email_cad"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="Digite seu e-mail"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_nome_cad" />
+
+    <EditText
+        android:id="@+id/edit_text_senha_cad"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
         android:hint="Digite sua senha"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_login_email" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_email_cad" />
 
     <Button
-        android:id="@+id/bt_logar"
+        android:id="@+id/bt_cadastrar"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="16dp"
-        android:text="Logar"
+        android:text="@string/botao_cadastrar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_login_senha" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="182dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="177dp"
-        android:onClick="abrirCadastroUsuario"
-        android:text="@string/texto_cadastre"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.475"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_logar" />
-
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_senha_cad" />
 </androidx.constraintlayout.widget.ConstraintLayout>
